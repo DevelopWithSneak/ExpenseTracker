@@ -21,4 +21,10 @@
     <string name="name">NAME</string>
     <string name="amount">AMOUNT</string>
     <string name="date">DATE</string>
+    <string name="title">TITLE</string>
+    <string name="category">Category</string>
+    <string name="groceries">Groceries</string>
+    <string name="categoryEg">Food, Transport, Entertainment</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="entry">Entry</string>
 </resources>

@@ -17,11 +17,13 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
+import com.example.data.repository.ExpenseRepository
 import com.example.presentation.BuildConfig
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.channels.ReceiveChannel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import java.io.Serializable
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
@@ -29,6 +31,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         private set
     protected lateinit var mContext: Activity
     private var lastClickTime = 0L
+    protected val expenseRepository by inject<ExpenseRepository>()
     abstract fun inflateBinding(): VB
     abstract fun backPressed()
     abstract fun initView()
@@ -51,6 +54,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         initObserver()
         initListener()
     }
+
     fun <T> AppCompatActivity.collectChannel(
         channel: ReceiveChannel<T>,
         state: Lifecycle.State = Lifecycle.State.STARTED,
@@ -64,6 +68,7 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
             }
         }
     }
+
     fun <T> AppCompatActivity.collectFlow(
         flow: Flow<T>,
         state: Lifecycle.State = Lifecycle.State.STARTED,

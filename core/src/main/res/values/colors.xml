@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="almost_white">#EDEDED</color>
     <color name="mainColor">#438883</color>
+    <color name="redColor">#FF0058</color>
     <color name="secondaryColor">#2F7E79</color>
     <color name="cardColor">#429690</color>
     <color name="greyColor">#AD737070</color>

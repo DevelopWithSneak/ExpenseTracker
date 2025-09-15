@@ -3,15 +3,19 @@ package com.example.presentation.activities.add_transaction
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
 import com.example.core.setSafeOnClickListener
-import com.example.data.model.DropDownItem
+import com.example.core.showToast
+import com.example.data.local.model.EntryType
+import com.example.data.local.model.Expense
 import com.example.presentation.R
-import com.example.presentation.adapter.DropDownAdapter
 import com.example.presentation.base.BaseActivity
 import com.example.presentation.databinding.ActivityAddTransactionBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
     override fun inflateBinding(): ActivityAddTransactionBinding {
@@ -29,17 +33,52 @@ class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
     }
 
     override fun initView() {
-        val items = listOf(
-            DropDownItem(com.example.core.R.drawable.ic_upwork, "Upwork"),
-        )
-        val adapter = DropDownAdapter(this, items)
-        binding.nameDropDown.setAdapter(adapter)
-        binding.nameDropDown.setText(items.first().name, false)
+        binding.entryText.text = getString(R.string.income)
+        binding.entrySwitch.isChecked = false
     }
-    override fun initObserver() {}
+    override fun initObserver() {
+    }
     override fun initListener() {
+        binding.entrySwitch.setOnCheckedChangeListener { _, isChecked ->
+            binding.entryText.text = if (isChecked) {
+                getString(R.string.expense)
+            } else {
+                getString(R.string.income)
+            }
+        }
         binding.backBtn.setSafeOnClickListener {
             backPressed()
+        }
+        binding.addBtn.setSafeOnClickListener {
+            val title = binding.titleEd.text.toString().trim()
+            val amountText = binding.amountEd.text.toString().trim()
+
+            // validation
+            if (title.isEmpty() || amountText.isEmpty()) {
+                showToast("Please fill all fields")
+                return@setSafeOnClickListener
+            }
+
+            val entryType = if (binding.entrySwitch.isChecked) {
+                EntryType.Expense.name
+            } else {
+                EntryType.Income.name
+            }
+
+            val expense = Expense(
+                title = title,
+                amount = amountText.toInt(),
+                entryType = entryType,
+                date = System.currentTimeMillis()
+            )
+
+            lifecycleScope.launch(Dispatchers.IO) {
+                expenseRepository.upsertExpense(expense)
+                withContext(Dispatchers.Main) {
+                    showToast("Transaction added successfully")
+                    backPressed()
+                }
+            }
         }
     }
     override fun backPressed() {

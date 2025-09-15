@@ -43,7 +43,7 @@
             android:id="@+id/topBarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add Transaction"
+            android:text="@string/add_transaction"
             android:textColor="@color/white"
             android:textSize="@dimen/_18ssp"
             android:textStyle="bold"
@@ -86,7 +86,7 @@
             android:layout_margin="@dimen/_8sdp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/nameLayout"
+                android:id="@+id/titleLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -95,47 +95,35 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/nameText"
+                    android:id="@+id/titleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:paddingHorizontal="@dimen/_8sdp"
-                    android:text="@string/name"
-                    android:textColor="@color/greyColor"
+                    android:text="@string/title"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
-                    app:layout_constraintBottom_toTopOf="@id/nameDropDownLayout"
+                    app:layout_constraintBottom_toTopOf="@id/titleEd"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/nameDropDownLayout"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/titleEd"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_45sdp"
                     android:layout_marginHorizontal="@dimen/_8sdp"
                     android:layout_marginTop="@dimen/_12sdp"
-                    app:endIconMode="dropdown_menu"
-                    app:endIconTint="@color/black"
+                    android:background="@drawable/text_field_border"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:gravity="center_vertical"
+                    android:hint="@string/groceries"
+                    android:textColorHint="@color/greyColor"
+                    android:paddingHorizontal="@dimen/_8sdp"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/nameText"
-                    app:shapeAppearanceOverlay="@style/RoundedTextInput"
-                    app:startIconDrawable="@drawable/ic_income">
-
-                    <AutoCompleteTextView
-                        android:id="@+id/nameDropDown"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_45sdp"
-                        android:clickable="true"
-                        android:focusable="false"
-                        android:gravity="center_vertical"
-                        android:hint="@string/name"
-                        android:inputType="none"
-                        android:paddingHorizontal="@dimen/_8sdp"
-                        android:textSize="@dimen/_12ssp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
+                    app:layout_constraintTop_toTopOf="@+id/titleText" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -145,7 +133,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nameLayout">
+                app:layout_constraintTop_toBottomOf="@+id/titleLayout">
 
                 <TextView
                     android:id="@+id/amountText"
@@ -155,7 +143,7 @@
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:paddingHorizontal="@dimen/_8sdp"
                     android:text="@string/amount"
-                    android:textColor="@color/greyColor"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toTopOf="@id/amountEd"
                     app:layout_constraintStart_toStartOf="parent"
@@ -171,6 +159,9 @@
                     android:drawablePadding="@dimen/_6sdp"
                     android:gravity="center_vertical"
                     android:hint="@string/amount"
+                    android:inputType="number"
+                    android:digits="0123456789"
+                    android:textColorHint="@color/greyColor"
                     android:paddingHorizontal="@dimen/_8sdp"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -180,7 +171,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/dateLayout"
+                android:id="@+id/entryLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_5sdp"
@@ -189,36 +180,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/amountLayout">
 
                 <TextView
-                    android:id="@+id/dateText"
+                    android:id="@+id/entryText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/entrySwitch"
+                    app:layout_constraintHorizontal_chainStyle="spread_inside" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/entrySwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:layout_marginBottom="@dimen/_8sdp"
-                    android:paddingHorizontal="@dimen/_8sdp"
-                    android:text="@string/date"
-                    android:textColor="@color/greyColor"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintBottom_toTopOf="@id/dateEd"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/dateEd"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_45sdp"
-                    android:layout_marginHorizontal="@dimen/_8sdp"
-                    android:layout_marginTop="@dimen/_12sdp"
-                    android:background="@drawable/text_field_border"
-                    android:drawablePadding="@dimen/_6sdp"
-                    android:gravity="center_vertical"
-                    android:hint="@string/date"
-                    android:paddingHorizontal="@dimen/_8sdp"
-                    android:textSize="@dimen/_12ssp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:useMaterialThemeColors="true"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/dateText" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/addBtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginHorizontal="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:text="@string/add_transaction"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16ssp"
+                app:backgroundTint="@color/mainColor"
+                app:cornerRadius="@dimen/_30sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/entryLayout"
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
