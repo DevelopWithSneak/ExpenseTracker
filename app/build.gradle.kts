@@ -1,7 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
 }
+
 
 android {
     namespace = "com.example.expensetracker"
@@ -54,4 +56,7 @@ dependencies {
     implementation(project(":presentation"))
     implementation(project(":core"))
     implementation(project(":data"))
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }
