@@ -45,6 +45,7 @@ class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
                 val expense = expenseRepository.getExpenseById(expenseId)
                 expense?.let {
                     withContext(Dispatchers.Main) {
+                        binding.topBarTitle.text = getString(R.string.update_transaction)
                         binding.titleEd.setText(it.title)
                         binding.amountEd.setText(it.amount.toString())
                         binding.entrySwitch.isChecked = it.entryType == EntryType.Expense.name

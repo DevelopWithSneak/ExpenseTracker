@@ -34,7 +34,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge(SystemBarStyle.light(getColor(com.example.core.R.color.mainColor), getColor(com.example.core.R.color.mainColor)))
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -48,6 +47,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             isUserInputEnabled = true
             registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
                 override fun onPageSelected(position: Int) {
+                    enableEdgeToEdge(SystemBarStyle.light(getColor(if (position==0) com.example.core.R.color.mainColor else com.example.core.R.color.white), getColor(if (position==0) com.example.core.R.color.mainColor else com.example.core.R.color.white)))
                     changePosition(position)
                 }
             })
