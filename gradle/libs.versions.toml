@@ -9,6 +9,7 @@ constraintlayout = "2.2.1"
 kotlinxSerializationJson = "1.9.0"
 lottie = "6.6.7"
 material = "1.13.0"
+mpandroidchart = "v3.1.0"
 roomRuntime = "2.8.0"
 roomKtx = "2.8.0"
 roomCompiler = "2.8.0"
@@ -25,6 +26,7 @@ androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 ssp-android = { module = "com.intuit.ssp:ssp-android", version.ref = "sspAndroid" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }

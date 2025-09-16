@@ -31,17 +31,11 @@ class MainViewModel(
     private fun getAllData() {
         viewModelScope.launch {
             repository.getAllExpenses().collectLatest { list ->
-                var expense = 0
-                var income = 0
 
-                for (item in list) {
-                    if (item.entryType == EntryType.Expense.name) {
-                        expense += item.amount
-                    } else {
-                        income += item.amount
-                    }
-                }
+                val (expenses, incomes) = list.partition { it.entryType == EntryType.Expense.name }
 
+                val expense = expenses.sumOf { it.amount }
+                val income = incomes.sumOf { it.amount }
                 val balance = income - expense
 
                 _state.update {
@@ -57,7 +51,9 @@ class MainViewModel(
     }
 
 
-    fun deleteNote(id: Int) {
+
+
+    fun deleteNote(id: Long) {
         viewModelScope.launch {
             repository.deleteExpense(id)
         }

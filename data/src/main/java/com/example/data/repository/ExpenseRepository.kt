@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface ExpenseRepository {
     suspend fun upsertExpense(expense: Expense)
-    suspend fun deleteExpense(id: Int)
+    suspend fun deleteExpense(id: Long)
+    suspend fun getExpenseById(id: Long): Expense?
     fun getAllExpenses(): Flow<List<Expense>>
 }

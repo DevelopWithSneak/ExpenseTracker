@@ -1,6 +1,5 @@
 package com.example.presentation.activities.main
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
@@ -17,10 +16,13 @@ import com.example.presentation.fragment.home.HomeFragment
 import com.example.presentation.fragment.statistics.StatisticsFragment
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
+    private val homeFragment by lazy {
+        HomeFragment()
+    }
     private val pagerAdapter: BaseViewPagerAdapter by lazy {
         BaseViewPagerAdapter(
             this, listOf(
-                HomeFragment(),
+                homeFragment,
                 StatisticsFragment(),
             )
         )
@@ -61,7 +63,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             binding.pager.setCurrentItem(1, false)
         }
         binding.addBtn.setSafeOnClickListener {
-            navigateTo(AddTransactionActivity::class.java)
+            navigateTo(AddTransactionActivity::class.java, "expense_id" to -1)
+        }
+        homeFragment.onItemClick={_,item->
+            navigateTo(AddTransactionActivity::class.java, "expense_id" to item.id)
         }
     }
 

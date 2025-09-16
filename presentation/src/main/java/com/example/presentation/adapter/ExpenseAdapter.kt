@@ -33,12 +33,12 @@ class ExpenseAdapter :
         return TransactionItemBinding.inflate(inflater, parent, false)
     }
 
-    override fun bind(item: Expense, binding: ViewBinding, position: Int) {
-        val b = binding as TransactionItemBinding
-        b.title.text = item.title
-        b.amount.setTextColorRes(if (item.entryType == EntryType.Expense.name) R.color.redColor else R.color.mainColor)
-        b.icon.setImageResource(if (item.entryType == EntryType.Expense.name) R.drawable.ic_expense_item else R.drawable.ic_income_item)
-        b.amount.text = "${item.amount} $"
-        b.desc.text = DateFormat.format("dd MMM yyyy", item.date)
+    override fun bind(item: Expense, b: ViewBinding, position: Int) {
+        val binding = b as TransactionItemBinding
+        binding.title.text = item.title
+        binding.amount.setTextColorRes(if (item.entryType == EntryType.Expense.name) R.color.redColor else R.color.mainColor)
+        binding.icon.setImageResource(if (item.entryType == EntryType.Expense.name) R.drawable.ic_expense_item else R.drawable.ic_income_item)
+        binding.amount.text = "${item.amount} $"
+        binding.desc.text = DateFormat.format("dd MMM yyyy", item.date)
     }
 }

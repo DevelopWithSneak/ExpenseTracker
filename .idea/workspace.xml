@@ -5,6 +5,31 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/core/src/main/res/drawable/chart_gradient.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/core/src/main/res/drawable/ic_expense.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/core/src/main/res/drawable/ic_visibility.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/core/src/main/res/drawable/ic_visibility_off.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/core/src/main/res/drawable/marker_bg.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/presentation/src/main/res/layout/activity_add_transaction.xml">
         <config>
           <theme>@android:style/Theme.Material.Light</theme>
@@ -15,29 +40,56 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/presentation/src/main/res/layout/fragment_home.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/presentation/src/main/res/layout/fragment_statistics.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/presentation/src/main/res/layout/marker_view.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/presentation/src/main/res/layout/transaction_item.xml">
+        <config>
+          <theme>@android:style/Theme.Material.Light</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ffa374b-ba83-49b1-b7f1-4394c4ce2f8e" name="Changes" comment="commit">
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/dao/ExpenseDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/db/AppDatabase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/mapper/Mapper.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/model/Expense.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/model/ExpenseEntity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/ExpenseRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/impl/ExpenseRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+    <list default="true" id="0ffa374b-ba83-49b1-b7f1-4394c4ce2f8e" name="Changes" comment="changes">
+      <change afterPath="$PROJECT_DIR$/core/src/main/res/drawable/chart_gradient.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/res/drawable/ic_visibility.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/res/drawable/ic_visibility_off.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/res/drawable/marker_bg.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/views/CustomMarkerView.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentation/src/main/res/layout/marker_view.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/src/main/java/com/example/data/model/DropDownItem.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/src/main/java/com/example/di/dataModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/data/src/main/java/com/example/di/dataModule.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/dao/ExpenseDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/local/dao/ExpenseDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/ExpenseRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/ExpenseRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/impl/ExpenseRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/data/src/main/java/com/example/data/repository/impl/ExpenseRepositoryImpl.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/add_transaction/AddTransactionActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/add_transaction/AddTransactionActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/on_boarding/OnBoardingActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/on_boarding/OnBoardingActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/adapter/DropDownAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/adapter/DropDownAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/base/BaseActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/base/BaseActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/main/MainViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/activities/main/MainViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/adapter/ExpenseAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/adapter/ExpenseAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/base/BaseListAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/base/BaseListAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/fragment/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/fragment/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/fragment/statistics/StatisticsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/java/com/example/presentation/fragment/statistics/StatisticsFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_add_transaction.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/res/layout/activity_add_transaction.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/presentation/src/main/res/layout/fragment_statistics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/res/layout/fragment_statistics.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/presentation/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/presentation/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,9 +173,24 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shafq/AndroidStudioProjectsForNewGithub/ExpenseTracker/core/src/main/res/drawable&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\shafq\AndroidStudioProjectsForNewGithub\ExpenseTracker\core\src\main\res\drawable" />
+      <recent name="C:\Users\shafq\AndroidStudioProjectsForNewGithub\ExpenseTracker\presentation\src\main\res\layout" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\shafq\AndroidStudioProjectsForNewGithub\ExpenseTracker\presentation\src\main\res\layout" />
+      <recent name="C:\Users\shafq\AndroidStudioProjectsForNewGithub\ExpenseTracker\core\src\main\res\layout" />
+    </key>
+    <key name="K2MoveDeclarationsDialog.RECENT_PACKAGE_KEY">
+      <recent name="com.example.presentation.views" />
+      <recent name="com.example.presentation" />
+    </key>
+  </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="gradle rm -rf .git " />
@@ -277,7 +344,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757929726202</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="changes">
+      <option name="closed" value="true" />
+      <created>1757952779505</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1757952779505</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -285,11 +360,17 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
+        <entry key="com.example.core.test">
+          <value>
+            <CheckInfo lastCheckTimestamp="1757950952490" />
+          </value>
+        </entry>
         <entry key="com.example.presentation.test">
           <value>
             <CheckInfo lastCheckTimestamp="1757929805889" />

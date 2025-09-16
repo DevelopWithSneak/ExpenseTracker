@@ -18,13 +18,19 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
+    private var expenseId: Long = -1L
     override fun inflateBinding(): ActivityAddTransactionBinding {
         return ActivityAddTransactionBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge(SystemBarStyle.light(getColor(com.example.core.R.color.mainColor), getColor(com.example.core.R.color.mainColor)))
+        enableEdgeToEdge(
+            SystemBarStyle.light(
+                getColor(com.example.core.R.color.mainColor),
+                getColor(com.example.core.R.color.mainColor)
+            )
+        )
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -33,27 +39,35 @@ class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
     }
 
     override fun initView() {
-        binding.entryText.text = getString(R.string.income)
-        binding.entrySwitch.isChecked = false
+        expenseId = intent.getLongExtra("expense_id", -1L)
+        if (expenseId != -1L) {
+            lifecycleScope.launch(Dispatchers.IO) {
+                val expense = expenseRepository.getExpenseById(expenseId)
+                expense?.let {
+                    withContext(Dispatchers.Main) {
+                        binding.titleEd.setText(it.title)
+                        binding.amountEd.setText(it.amount.toString())
+                        binding.entrySwitch.isChecked = it.entryType == EntryType.Expense.name
+                        binding.entryText.text =
+                            if (it.entryType == EntryType.Expense.name) getString(R.string.expense)
+                            else getString(R.string.income)
+                        binding.addBtn.text = getString(R.string.update_transaction)
+                    }
+                }
+            }
+        } else {
+            binding.entryText.text = getString(R.string.income)
+            binding.entrySwitch.isChecked = false
+        }
     }
+
     override fun initObserver() {
     }
+
     override fun initListener() {
-        binding.entrySwitch.setOnCheckedChangeListener { _, isChecked ->
-            binding.entryText.text = if (isChecked) {
-                getString(R.string.expense)
-            } else {
-                getString(R.string.income)
-            }
-        }
-        binding.backBtn.setSafeOnClickListener {
-            backPressed()
-        }
         binding.addBtn.setSafeOnClickListener {
             val title = binding.titleEd.text.toString().trim()
             val amountText = binding.amountEd.text.toString().trim()
-
-            // validation
             if (title.isEmpty() || amountText.isEmpty()) {
                 showToast("Please fill all fields")
                 return@setSafeOnClickListener
@@ -66,6 +80,7 @@ class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
             }
 
             val expense = Expense(
+                id = if (expenseId == -1L) 0 else expenseId,
                 title = title,
                 amount = amountText.toInt(),
                 entryType = entryType,
@@ -75,12 +90,19 @@ class AddTransactionActivity : BaseActivity<ActivityAddTransactionBinding>() {
             lifecycleScope.launch(Dispatchers.IO) {
                 expenseRepository.upsertExpense(expense)
                 withContext(Dispatchers.Main) {
-                    showToast("Transaction added successfully")
+                    showToast(
+                        if (expenseId == -1L) "Transaction added successfully"
+                        else "Transaction updated successfully"
+                    )
                     backPressed()
                 }
             }
         }
+        binding.backBtn.setSafeOnClickListener {
+            backPressed()
+        }
     }
+
     override fun backPressed() {
         finish()
     }

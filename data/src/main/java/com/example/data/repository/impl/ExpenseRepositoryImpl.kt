@@ -15,8 +15,12 @@ class ExpenseRepositoryImpl(
         dao.upsertExpense(expense.toEntity())
     }
 
-    override suspend fun deleteExpense(id: Int) {
+    override suspend fun deleteExpense(id: Long) {
         dao.deleteExpense(id)
+    }
+
+    override suspend fun getExpenseById(id: Long): Expense? {
+        return dao.getExpenseById(id)?.toDomain()
     }
 
     override fun getAllExpenses(): Flow<List<Expense>> {

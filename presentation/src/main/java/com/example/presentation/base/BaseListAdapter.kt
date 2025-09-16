@@ -20,7 +20,7 @@ abstract class BaseListAdapter<T : Any>(
         viewType: Int
     ): ViewBinding
 
-    abstract fun bind(item: T, binding: ViewBinding, position: Int)
+    abstract fun bind(item: T, b: ViewBinding, position: Int)
 
     open fun getItemViewTypeFor(position: Int, item: T): Int = 0
 
@@ -36,14 +36,14 @@ abstract class BaseListAdapter<T : Any>(
         val holder = BaseViewHolder(binding)
 
         holder.itemView.setOnClickListener {
-            val position = holder.adapterPosition
+            val position = holder.bindingAdapterPosition
             if (position != RecyclerView.NO_POSITION) {
                 onItemClick?.invoke(position, getItem(position))
             }
         }
 
         holder.itemView.setOnLongClickListener {
-            val position = holder.adapterPosition
+            val position = holder.bindingAdapterPosition
             return@setOnLongClickListener if (position != RecyclerView.NO_POSITION) {
                 onItemLongClick?.invoke(position, getItem(position)) ?: false
             } else false
